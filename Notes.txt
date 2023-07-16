@@ -1,0 +1,30 @@
+to extract tree, commit, blobs, or tags form a pack:
+echo <ID> | pack-objects
+This only works one 1 obj at a time.
+However if I push the <ID> into a file, 1 ID per line, I can then cat the results out; and get a pack of those iteams.
+
+
+
+pack a commit: 
+git rev-list --objects  -1 <Commit id> | awk '{print $1}' | git pack-objects --stdout > o3.pack
+
+
+
+
+
+to find contents of a pack file:
+1) git index-pack <file>.pack
+2) git verify-pack -v <file>.pack
+
+
+
+to exploded pack into system:
+git unpack-objects <pack>
+
+
+to replace a refs points to
+git update-ref refs/heads/master 342c4b6c2e413d413ea2209e4f628dc7c9c8f9e8
+
+
+to find the objectId
+git show-ref refs/tags/thickTag
